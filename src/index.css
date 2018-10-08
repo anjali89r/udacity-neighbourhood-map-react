@@ -48,6 +48,11 @@ ul {
   cursor: pointer;
   width: 334px;
 } */
+p {
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+}
 .list-span {
   font-size:25px;
   cursor:pointer;

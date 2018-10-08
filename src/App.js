@@ -17,6 +17,7 @@ class App extends Component {
       renderMap = () => {
         loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyBSauZRCyR4AVkR294nPz-PQlz_Ybr5-0M&callback=initMap")
         window.initMap = this.initMap
+        window.gm_authFailure = this.gm_authFailure
       }
 
       //method to get the venues from FourSquare API
@@ -39,7 +40,10 @@ class App extends Component {
 
         })
         .catch(error => {
-          console.log("error: ", error)
+          var p = document.createElement("p");
+          p.textContent = 'Sorry, there was some some Network Error in FourSquare API!'
+          console.log('error in foursq api venue: ', error)
+          document.getElementById('map').appendChild(p)
         })
 
       }
@@ -101,6 +105,11 @@ class App extends Component {
         venues: alllocations
     });
   }
+
+  gm_authFailure = () => {
+
+      alert('Google Maps API error')
+   };
   /**
      * Open the infowindow for the marker
      */
@@ -120,7 +129,8 @@ class App extends Component {
      * Retrive the location data from the foursquare api for the marker and display it in the infowindow
      */
   getMarkerInfo = (marker) => {
-console.log("get info")
+    console.log("get info")
+    var self = this;
     var clientId = "5X0A1QW5XH4FBYHC2Y2WGZAIHITJLNGUTPFVUMYWUS04Q1ZH";
     var clientSecret = "1BCBPNHQF4FT0OGWCYDDTARWOTPJTAWWBNLSM14NCBFLQ0W4";
     var url = "https://api.foursquare.com/v2/venues/search?client_id=" + clientId + "&client_secret=" + clientSecret + "&v=20130815&ll=" + marker.getPosition().lat() + "," + marker.getPosition().lng() + "&limit=1";
@@ -142,7 +152,7 @@ console.log("get info")
             }
         )
         .catch(function (err) {
-            this.state.infowindow.setContent("Sorry data can't be loaded");
+            self.state.infowindow.setContent("Sorry, there was some network error in FourSquare API");
         });
 }
 /**
@@ -190,5 +200,6 @@ closeInfoWindow = () => {
       script.defer = true;
       firstScriptIndex.parentNode.insertBefore(script, firstScriptIndex)
     }
+
 
 export default App;

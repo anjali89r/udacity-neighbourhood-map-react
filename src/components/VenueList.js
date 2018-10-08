@@ -72,7 +72,7 @@ class VenueList extends Component {
 
         return (
             <div>
-                <div id="mySidenav" class="sidenav">
+                <div id="mySidenav" className="sidenav">
                     <input role="search" aria-labelledby="filter" id="search-field" className="search-field" type="text" placeholder="food places"
                     value={this.state.query} onChange={this.filterLocations}/>
                     <span className="closebtn" onClick={this.closeNav}>&times;</span>
