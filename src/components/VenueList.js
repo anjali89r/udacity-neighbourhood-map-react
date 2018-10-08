@@ -15,7 +15,7 @@ class VenueList extends Component {
         };
 
         this.filterLocations = this.filterLocations.bind(this);
-        //this.toggleSuggestions = this.toggleSuggestions.bind(this);
+
     }
 
     /**
@@ -42,7 +42,9 @@ class VenueList extends Component {
         });
     }
 
-
+    componentDidMount() {
+        this.openNav();
+    }
     componentWillReceiveProps(nextProps) {
         if (this.props.venues !== nextProps.venues) {
           this.setState({
@@ -51,18 +53,16 @@ class VenueList extends Component {
         }
       }
 
-openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("map").style.marginLeft = "250px";
-}
+    openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("map").style.marginLeft = "250px";
+    }
 
-closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("map").style.marginLeft = "0";
-}
-    /**
-     * Render function of LocationList
-     */
+    closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("map").style.marginLeft = "0";
+    }
+
     render() {
         var Venuelist = this.state.venues.map(function (listItem, index) {
             return (
@@ -75,7 +75,7 @@ closeNav() {
                 <div id="mySidenav" class="sidenav">
                     <input role="search" aria-labelledby="filter" id="search-field" className="search-field" type="text" placeholder="food places"
                     value={this.state.query} onChange={this.filterLocations}/>
-                    <a href="javascript:void(0)" className="closebtn" onClick={this.closeNav}>&times;</a>
+                    <span className="closebtn" onClick={this.closeNav}>&times;</span>
                     <span className="title">Mumbai Eateriess</span>
                     <ul>
                       {Venuelist}

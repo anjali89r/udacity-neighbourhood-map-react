@@ -10,7 +10,7 @@ class App extends Component {
       prevmarker: ''
     }
     componentDidMount() {
-      console.log("will")
+
       this.getVenues();
 
     }
@@ -18,6 +18,8 @@ class App extends Component {
         loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyBSauZRCyR4AVkR294nPz-PQlz_Ybr5-0M&callback=initMap")
         window.initMap = this.initMap
       }
+
+      //method to get the venues from FourSquare API
       getVenues = () => {
         const endpoint = "https://api.foursquare.com/v2/venues/explore?";
         const parameters = {
@@ -41,6 +43,9 @@ class App extends Component {
         })
 
       }
+      /**
+     * Initialise the map once the google map script is loaded
+     */
       initMap = () => {
         var self = this;
         var map = new window.google.maps.Map(document.getElementById('map'), {
@@ -49,7 +54,7 @@ class App extends Component {
           zoom: 12,
           mapTypeControl: false
         });
-        // document.getElementById('map').style.height = window.innerHeight + "px";
+
 
         var infowindow = new window.google.maps.InfoWindow({});
         window.google.maps.event.addListener(infowindow, 'closeclick', ()=>{
@@ -71,6 +76,7 @@ class App extends Component {
         this.closeInfoWindow();
     });
     var alllocations = [];
+
     this.state.venues.forEach(function (location) {
         var heading = location.venue.name + ' - ' + location.venue.categories[0].name;
         var marker = new window.google.maps.Marker({
@@ -80,7 +86,7 @@ class App extends Component {
             map: map,
             title: location.venue.name
         });
-//console.log("this before: ", self)
+
         marker.addListener('click', ()=> {
           console.log("tis: ", self)
             self.openInfoWindow(marker);
@@ -95,6 +101,9 @@ class App extends Component {
         venues: alllocations
     });
   }
+  /**
+     * Open the infowindow for the marker
+     */
     openInfoWindow = (marker) => {
       this.closeInfoWindow();
       this.state.infowindow.open(this.state.map, marker);
@@ -107,6 +116,9 @@ class App extends Component {
       this.state.map.panBy(0, -200);
       this.getMarkerInfo(marker);
   }
+  /**
+     * Retrive the location data from the foursquare api for the marker and display it in the infowindow
+     */
   getMarkerInfo = (marker) => {
 console.log("get info")
     var clientId = "5X0A1QW5XH4FBYHC2Y2WGZAIHITJLNGUTPFVUMYWUS04Q1ZH";
@@ -133,6 +145,10 @@ console.log("get info")
             this.state.infowindow.setContent("Sorry data can't be loaded");
         });
 }
+/**
+     * Close the infowindow for the marker
+
+     */
 closeInfoWindow = () => {
   if (this.state.prevmarker) {
       this.state.prevmarker.setAnimation(null);
@@ -142,6 +158,7 @@ closeInfoWindow = () => {
   });
   this.state.infowindow.close();
 }
+
   render() {
 
     return (
@@ -161,7 +178,10 @@ closeInfoWindow = () => {
     );
   }
 }
-
+/**
+ * Load the google maps Asynchronously
+ * @param {srcUrl} url of the google maps script
+ */
     function loadScript(srcUrl) {
       var firstScriptIndex = window.document.getElementsByTagName("script")[0];
       var script = window.document.createElement("script");
