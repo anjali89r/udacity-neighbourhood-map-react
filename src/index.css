@@ -8,7 +8,112 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+/* .search {
+  z-index: 1;
+  position: fixed;
+  top: 5px;
+  left: 5px;
+}
+
+.search-field {
+  width: 320px;
+  padding: 5px;
+}
+
+ul {
+  background: white;
+  border: 1px solid darkgrey;
+  overflow: auto;
+  padding: 0px;
+  margin: 0;
+  max-height: 400px;
+  overflow: auto;
+}
+
+.box {
+  cursor: pointer;
+  padding: 5px;
+}
+
+.box:hover {
+  background-color: #269abc;
+  color: white;
+}
+
+.button {
+  text-align: center;
+  padding: 5px;
+  background-color: white;
+  border: 1px darkgrey solid;
+  cursor: pointer;
+  width: 334px;
+} */
+.list-span {
+  font-size:25px;
+  cursor:pointer;
+  margin-left: 20px;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+.sidenav input {
+  width: 200px;
+  margin-left: 6px;
+  padding: 6px;
+  font-size: 14px;
+}
+.sidenav ul {
+  padding-left: 6px;
+}
+.sidenav li {
+  padding: 5px 5px 5px 3px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav li:hover {
+  color: #f1f1f1;
+  cursor: pointer;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color: #818181
+}
+.sidenav .closebtn:hover {
+  color: #fff;
+}
+.sidenav .title {
+  position: absolute;
+  top: 14px;
+  left: 0;
+  font-size: 20px;
+  color: #ffffffe0;
+  font-weight: bold;
+}
+@media screen and (max-height: 450px) {
+.sidenav {padding-top: 15px;}
+.sidenav li {font-size: 14px;}
+}
+#map {
+  transition: margin-left .5s;
+  padding: 20px;
 }
