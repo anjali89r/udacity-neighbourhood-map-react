@@ -23,13 +23,11 @@ A new browser window open automatically displaying the app.  If it doesn't, navi
 udated version
 
 ```
-// Object literal notation
-const sister = {
-  name: "Sarah", 
-  age: 23,
-  parents: [ "alice", "andy" ],
-  siblings: ["julia"],
-  favoriteColor: "purple",
-  pets: true
+const facebookProfile = {
+    name: "Anj",
+    messages: ["kjfh", "kjfh", "iwe"],
+    postMessage: function(message){
+        facebookProfile.messages.push(message);
+    }
 };
 ```
