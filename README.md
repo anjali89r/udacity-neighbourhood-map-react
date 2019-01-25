@@ -27,7 +27,7 @@ const facebookProfile = {
     name: "Anj",
     messages: ["kjfh", "kjfh", "iwe"],
     postMessage: function(message){
-        facebookProfile.messages.push(message);
+        __~blank~__.messages.push(message);
     }
 };
 ```
