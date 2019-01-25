@@ -23,15 +23,13 @@ A new browser window open automatically displaying the app.  If it doesn't, navi
 udated version
 
 ```
-  /* 
-  object literal 
-  */
-  const sister = {
-    name: "Sarah", 
-    age: 23,
-    parents: [ "alice", "andy" ],
-    siblings: ["julia"],
-    favoriteColor: "purple",
-    pets: true
-  };
+// Object literal notation
+const sister = {
+  name: "Sarah", 
+  age: 23,
+  parents: [ "alice", "andy" ],
+  siblings: ["julia"],
+  favoriteColor: "purple",
+  pets: true
+};
 ```
