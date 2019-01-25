@@ -20,5 +20,17 @@ A new browser window open automatically displaying the app.  If it doesn't, navi
 
 ***NOTE:*** *The service workers for this app will only cache the site when it is in production mode.*
 
-
-
+udated version
+/* 
+object literal 
+*/
+```
+  const sister = {
+    name: "Sarah", 
+    age: 23,
+    parents: [ "alice", "andy" ],
+    siblings: ["julia"],
+    favoriteColor: "purple",
+    pets: true
+  };
+```
